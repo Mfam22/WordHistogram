@@ -7,3 +7,8 @@ would produce
 john | == (2)
 jacob | = (1)
 and | = (1)
+
+
+USAGE:
+make - Compiles and runs code, producing output file
+make clean - Clears .class files and output
