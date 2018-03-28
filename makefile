@@ -7,7 +7,7 @@ PACKAGE = histogram/
 
 CLASSES = \
   $(PACKAGE)Histogram.java \
-	$(PACKAGE)Runner.java
+	$(PACKAGE)Runner.java \
 
 default: classes run
 
@@ -17,6 +17,6 @@ run:
 classes: $(CLASSES:.java=.class)
 
 clean:
-	$(RM) $(PACKAGE)*.class
+	$(RM) $(PACKAGE)bin/*.class
 	$(RM) output.txt
 

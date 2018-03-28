@@ -12,3 +12,10 @@ and | = (1)
 USAGE:
 make - Compiles and runs code, producing output file
 make clean - Clears .class files and output
+
+INCLUDED FILES:
+Histogram.java - contains Histogram class and methods for modifyingit
+Runner.java - creates a Histogram with the paragraph from input.txt and puts it into output.txt
+TestHistogram.java - A testing harness that was used during production
+input.txt - Example paragraph with the Hickory Dickory Dock poem
+output.txt - Example Histogram produced based on the Hickory Dickory Dock poem

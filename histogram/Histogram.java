@@ -4,13 +4,14 @@ import java.util.*;
 import java.io.*;
 
 public class Histogram{
-	HashMap<String,Integer> map;
+	private HashMap<String,Integer> map;
 	
 	public Histogram(){
 		map = new HashMap<String,Integer>();
 	}
 	
 	public void addWord(String word) {
+		word = word.toLowerCase();
 		Integer count = map.get(word);
 		if (count == null) {
 			map.put(word, 1);
@@ -20,8 +21,21 @@ public class Histogram{
 		}
 	}
 	
+	public Integer getCount(String word) {
+		return map.get(word);
+		
+	}
+	
+	public void clearMap() {
+		map.clear();
+	}
+	
+	
+	// Reads paragraph from a file and then calls addWord to put each word
+	// into the histogram
 	public void readFile(String path) throws FileNotFoundException{
 		Scanner file = new Scanner(new File(path));
+		
 		file.useDelimiter("[\\p{Punct}\\s]+");
 		while( file.hasNext()){
 			String w = file.next();
@@ -30,6 +44,8 @@ public class Histogram{
 		file.close();
 	}
 	
+	
+	// Helper method for printing the HashMap values in sorted order
 	public Object[][] generateList() {
 		Object[][] result = new Object[map.size()][2];
 		int i = 0;
@@ -39,6 +55,8 @@ public class Histogram{
 			result[i][1] = count;
 			i++;
 		}
+		// Custom sort to sort by second element of inner array
+		// Which is the # of occurances for each word
 		Arrays.sort(result, new Comparator<Object[]>() {
 			@Override
 			public int compare(final Object[] ob1, final Object[] ob2) {
@@ -47,10 +65,10 @@ public class Histogram{
 				return val2.compareTo(val1);
 			}
 		});
-//		System.out.println(Arrays.deepToString(result));
 		return result;
 	}
 	
+	// Creates the histogram and puts it into output.txt
 	public void printMap() throws FileNotFoundException{
 		PrintWriter out = new PrintWriter(new FileOutputStream("output.txt"));
 		Object[][] sorted = generateList();
