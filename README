@@ -1,0 +1,9 @@
+This code generates a word histogram based on a short paragraph from an input file. For example:
+
+John, Jacob, and John
+
+would produce
+
+john | == (2)
+jacob | = (1)
+and | = (1)
